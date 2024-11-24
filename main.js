@@ -1,7 +1,7 @@
 const canvas = document.getElementById("heartCanvas");
 const ctx = canvas.getContext("2d");
 
-const SCALE = 400;
+const SCALE = 150;
 const STEP = 0.01;
 const FONT_SIZE = "100px Comic Sans MS";
 const TEXT_COLOR = "white";
