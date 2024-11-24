@@ -15,12 +15,12 @@ const centerY = canvas.height / 2;
 
 let a = 0;
 
-const heartText = [
-  { threshold: 15, text: "Найкраща", xOffset: 2000, yOffset: 1000 },
-  { threshold: 20, text: "Найдобріша", xOffset: 4700, yOffset: 1000 },
-  { threshold: 25, text: "Найкрасивіша", xOffset: 2400, yOffset: 1600 },
-  { threshold: 30, text: "Найніжніша", xOffset: 4400, yOffset: 1600 },
-  { threshold: 35, text: "Я тебе люблю ♥", xOffset: 3400, yOffset: 2400 },
+const heartTextElements = [
+  { threshold: 15, id: "text1" },
+  { threshold: 20, id: "text2" },
+  { threshold: 25, id: "text3" },
+  { threshold: 30, id: "text4" },
+  { threshold: 35, id: "text5" },
 ];
 
 function heartFunction(x, a) {
@@ -57,11 +57,12 @@ function drawHeartLine(x, y) {
 }
 
 function drawText() {
-  heartText.forEach(({ threshold, text, xOffset, yOffset }) => {
-    if (a >= threshold) {
-      ctx.font = FONT_SIZE;
-      ctx.fillStyle = TEXT_COLOR;
-      ctx.fillText(text, canvas.width - xOffset, yOffset);
+  heartTextElements.forEach(({ threshold, id }) => {
+    const textElement = document.getElementById(id);
+    if (a >= threshold && textElement) {
+      textElement.style.visibility = "visible";
+    } else if (textElement) {
+      textElement.style.visibility = "hidden";
     }
   });
 }
@@ -72,7 +73,7 @@ function drawHeart() {
   drawHeartShape();
   drawText();
 
-  a += 0.03;
+  a += 0.1;
   requestAnimationFrame(drawHeart);
 }
 
