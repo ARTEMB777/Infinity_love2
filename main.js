@@ -73,7 +73,7 @@ function drawHeart() {
   drawHeartShape();
   drawText();
 
-  a += 0.1;
+  a += 0.03;
   requestAnimationFrame(drawHeart);
 }
 
